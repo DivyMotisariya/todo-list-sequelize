@@ -1,0 +1,20 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    title To-Do List
+    link(rel="stylesheet", href="/css/index.css")
+  body(style="text-align: center")
+    h3 To-Do List
+    form(action="/", method="post") 
+      input#item(type="text" autocomplete="off" autofocus name="item" placeholder="Enter a task...")
+      br
+      button#add(type="submit") Add to list
+    
+    ul#list(style="list-style-type: none;")
+      each item in items
+        li
+          form(id=item.id action="/" + item.id, method="post") 
+            input(type="checkbox", value="Hello" name=item.id onchange="remove("+item.id+")")
+            label(for=item.id) #{item.item}
+    script(src="/js/index.js") 
